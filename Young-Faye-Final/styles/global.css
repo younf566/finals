@@ -1,0 +1,449 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+html {
+    background: linear-gradient(#4a4ac1, #8ae5f3);
+    font-family: Arial, Helvetica, Arial;
+    color: rgb(255, 255, 255);
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+ 
+}
+
+body {
+    height: 100%;
+    min-height: 100%;
+    cursor: none;
+
+  
+}
+
+
+#invertedcursor {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border-radius: 50%;
+    top: var(--y, 0);
+    left: var(--x, 0);
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    mix-blend-mode: difference;
+    transition: transform .2s;
+    pointer-events: none;
+  }
+ 
+
+#top-header {
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur( 10px);
+    border-bottom: solid white 2px;
+    
+}
+
+#top-header img {
+    width: 450px;
+    height: auto;
+    margin-right: 1px;
+}
+
+#top-header h1 {
+    font-size: 2em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+
+.hamburger1 {
+    height: 45px;
+    margin-top: 20px;
+    display: -ms-grid;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    justify-items: left;
+    z-index: 120;
+   
+   
+    
+}
+
+.hamburger1 div {
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    width: 100px;
+    height: 5px;
+    transition: all 0.2s ease-in-out;
+
+}
+
+#toggle1 {
+    display: none;
+ 
+}
+
+#toggle1:checked + .hamburger1 .top {
+    transform: rotate(-45deg);
+    margin-top: 22.5px;
+}
+
+#toggle1:checked + .hamburger1 .meat {
+    transform: rotate(45deg);
+    margin-top: -5px;
+}
+
+#toggle1:checked + .hamburger1 .bottom {
+    transform: scale(0);
+}
+
+#toggle1:checked ~ .menu1 {
+    height: 340px;
+    border-bottom: solid white 2px;
+}
+
+/* Menu Styling */
+.menu1 {
+    margin: 0;
+    display: -ms-grid;
+    display: grid;
+    grid-template-rows: 1fr repeat(4, 0.5fr);
+    grid-row-gap: 25px;
+    padding: 0;
+    list-style: none;
+    clear: both;
+    width: auto;
+    text-align: left;
+    height: 10px;
+    overflow: hidden;
+    transition: height .4s ease;
+    z-index: 120;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+ 
+}
+
+.menu1 a:first-child {
+    margin-top: 40px;
+}
+
+.menu1 a:last-child {
+    margin-bottom: 40px;
+}
+
+.link1 {
+    text-decoration: none;
+    color: aliceblue;
+
+    width: 100%;
+    margin: 0;
+    padding: 10px 0;
+    font: 700 40px 'Oswald', sans-serif;
+}
+
+.link1:hover {
+    color: rgb(139, 146, 245);
+    transition: all 0.3s ease;
+}
+/* Loading Screen */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    animation: fadeOut 1.5s ease-out forwards;
+    animation-delay: 2s;
+}
+
+#loading-screen.hidden {
+    display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #main-nav ul {
+        display: none;
+    }
+
+    .hamburger1 {
+        height: 45px;
+        margin: 10px;
+        display: -ms-grid;
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+        justify-items: center;
+        z-index: 120;
+    
+    }
+
+    .menu1.active {
+        display: block;
+    }
+}
+
+main {
+    
+    margin-bottom: 1200px;
+    padding-left: 2em;
+    animation: fadeIn 1s ease-in forwards;
+    animation-delay: var(--delay, 0s); /* Use delay for sequence */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+    
+
+main h1 {
+    font-weight: bold;
+    font-size: 5em; /* Large font size for desktop */
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center; /* Ensure it stays visually centered */
+    white-space: normal; /* Allow wrapping for smaller screens */
+    line-height: 1.2; /* Adjust line spacing */
+    word-break: break-word; /* Break long words if needed */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    main h1 {
+        font-size: 3em; /* Reduce font size for smaller screens */
+        line-height: 1.1; /* Adjust spacing to keep the header compact */
+    }
+}
+
+main h2 {
+    font-size: 2em;
+    margin-bottom: 1em;
+    border-radius: 10px;
+    padding-top: 2em;
+
+}
+
+#main-p2 {
+    line-height: 1.8em;
+    font-size: 1.1em;
+    margin-bottom: 2em;
+    text-transform: uppercase;
+    padding: 2em;
+    margin: 2em 0;
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Box line for paragraphs */
+    background-color: rgba(210, 106, 196, 0.42); /* Light background for aesthetic */
+    border-radius: 10px; /* Smooth corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    overflow: hidden; 
+}
+#main-p1 {
+    line-height: 1.8em;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    padding: 2em;
+    margin: 2em 0;
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Box line for paragraphs */
+    background-color: rgba(70, 65, 213, 0.42); /* Light background for aesthetic */
+    border-radius: 10px; /* Smooth corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    overflow: hidden;
+}
+
+/* Portrait Styling */
+.portrait {
+    float: right; /* Floats portrait to the right of the paragraph */
+    width: 500px; /* Fixed width for portrait */
+    height: auto;
+    margin: 0 0 20px 20px; /* Adds spacing between portrait and paragraph */
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Box line for portrait */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    background-color: rgba(70, 65, 213, 0.42)
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    #main-p1 {
+        display: flex;
+        flex-direction: column; /* Stack portrait and paragraph vertically */
+        align-items: center; /* Center-align content for a clean look */
+    }
+
+    .portrait {
+        float: none; /* Remove float to stack portrait above paragraph */
+        width: 100%; /* Allow portrait to span full width */
+        max-width: 500px; /* Prevent portrait from being too large */
+        margin: 0 auto 1em auto; /* Center the portrait and add spacing below */
+    }
+
+    #main-p1 p {
+        text-align: justify; /* Ensure paragraph text is neatly aligned */
+    }
+}
+
+
+#index-main {
+   /* Create space below the second blob */
+    padding: 1em;
+    border-radius: 15px;
+    text-align:justify;
+    line-height: 1.6;
+  
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    z-index: -1; /
+    
+}
+
+.blob-image {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    animation: pulse 10s infinite ease-in-out alternate;
+  }
+  @keyframes pulse {
+    from { transform: scale(1.0); }
+    to { transform: scale(1.2); }
+  }
+  
+
+.blob-top {
+    top: 0;
+
+
+}
+
+.blob-bottom {
+    top: 120vh; 
+}
+
+
+
+/* Sketch Styling */
+.sketch-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+    gap: 2em; /* Space between sketches */
+    margin: 2em auto; /* Center the gallery */
+    max-width: 1200px; /* Limit the gallery's maximum width */
+    width: 100%; 
+  
+}
+#sketch1-container, #sketch2-container, #sketch3-container, #sketch4-container, #sketch5-container, #sketch6-container, #sketch7-container {
+
+    width: 500px; /* Fixed width for each sketch */
+    height: 600px; /* Fixed height for each sketch */
+    position: relative;
+    aspect-ratio: 1/1;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for better visuals */
+    margin: 0 auto;
+}
+ 
+
+#sketch1-container:hover, #sketch2-container:hover, #sketch3-container:hover, #sketch4-container:hover, #sketch5-container:hover, #sketch6-container:hover, #sketch7-container {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+}
+
+.sketch-container .sketch-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 0.5em;
+    text-align: center;
+    font-size: 1em;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+ 
+}
+
+.sketch-container:hover .sketch-title {
+    transform: translateY(0);
+}
+
+/* Footer Styling */
+#btm-footer {
+    padding: 1em;
+    text-align: center;
+    border-radius: 15px;
+}
+.loading-Screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        width: 95%;
+        margin: 0 auto;
+    }
+
+   
+    @media (max-width: 768px) {
+        main h1 {
+            font-size: 3em; /* Reduce font size for smaller screens */
+        }
+    }
+    @media (max-width: 768px) {
+        #top-header {
+            flex-direction: column;
+            align-items: center;
+        }
+    
+        .hamburger1 {
+            margin-top: 1em;
+            justify-content: center;
+        }
+    
+        #top-header img {
+            width: 300px; /* Scale logo for smaller screens */
+        }
+    
+        #top-header h1 {
+            font-size: 1.5em;
+            text-align: center;
+        }
+    }
+
+    .sketch-gallery {
+        grid-template-columns: repeat(1, 1fr);
+         /* Single column on smaller screens */
+    }
+    .sketch-container {
+        aspect-ratio: 1; /* Maintain square aspect ratio */
+        width: 100%;
+    }
+}
